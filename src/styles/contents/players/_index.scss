@@ -69,18 +69,18 @@ $players-image-large-desktop-width: 991px;
       &::before {
         width: 100%;
         height: 100%;
-        background-image: url("images/mobile/basketball-player-image.webp");
+        background-image: url("/images/mobile/basketball-player-image.webp");
         background-repeat: no-repeat;
         top: 0;
         z-index: 1;
 
         @media (min-width: utils.$breakpoint-tablet) {
-          background-image: url("images/tablet/basketball-player-image.webp");
+          background-image: url("/images/tablet/basketball-player-image.webp");
         }
 
         @media (min-width: utils.$breakpoint-desktop) {
           background-size: contain;
-          background-image: url("images/desktop/basketball-player-image.webp");
+          background-image: url("/images/desktop/basketball-player-image.webp");
         }
       }
 

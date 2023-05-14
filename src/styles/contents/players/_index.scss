@@ -1,0 +1,243 @@
+@use "../../utils" as utils;
+@forward "../shared";
+
+$players-image-desktop-width: 678px;
+$players-image-large-desktop-width: 991px;
+.players {
+  &-container {
+    position: relative;
+    margin-top: 19px;
+
+    @media (min-width: utils.$breakpoint-desktop) {
+      max-width: calc(100% - utils.$max-width-space);
+      margin-inline: auto;
+      margin-top: 0;
+    }
+
+    &__text-title {
+      @extend .text-title;
+      padding-left: 19px;
+
+      @media (min-width: utils.$breakpoint-tablet) {
+        padding-left: 31px;
+        margin-bottom: 34px;
+      }
+
+      @media (min-width: utils.$breakpoint-desktop) {
+        padding-left: 0;
+        padding-top: 124px;
+        margin-bottom: 68px;
+      }
+    }
+
+    &__image-background {
+      position: absolute;
+      width: 100%;
+      max-width: 302px;
+      padding-top: 250px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 22px;
+      left: 0;
+      right: 0;
+
+      @media (min-width: utils.$breakpoint-tablet) {
+        max-width: 437px;
+        padding-top: 518px;
+        left: auto;
+        top: 0;
+        margin-top: 19px;
+      }
+
+      @media (min-width: utils.$breakpoint-desktop) {
+        margin-top: 0px;
+        max-width: $players-image-desktop-width;
+        padding-top: calc(($players-image-desktop-width * 815px) / $players-image-large-desktop-width);
+      }
+
+      @media (min-width: utils.$breakpoint-large-desktop) {
+        max-width: $players-image-large-desktop-width;
+        padding-top: calc(($players-image-large-desktop-width * 815px) / $players-image-large-desktop-width);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+      }
+
+      &::before {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/mobile/basketball-player-image.webp");
+        background-repeat: no-repeat;
+        top: 0;
+        z-index: 1;
+
+        @media (min-width: utils.$breakpoint-tablet) {
+          background-image: url("images/tablet/basketball-player-image.webp");
+        }
+
+        @media (min-width: utils.$breakpoint-desktop) {
+          background-size: contain;
+          background-image: url("images/desktop/basketball-player-image.webp");
+        }
+      }
+
+      &::after {
+        width: 100vw;
+        height: 35px;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        background-color: utils.$purple-fade-color;
+
+        @media (min-width: utils.$breakpoint-tablet) {
+          content: none;
+        }
+      }
+    }
+
+    &__details-content {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+      list-style-type: none;
+
+      @media (max-width: calc(utils.$breakpoint-tablet - 1px)) {
+        display: none;
+      }
+
+      .detail-container {
+        position: relative;
+        padding-left: 31px;
+
+        @media (min-width: utils.$breakpoint-desktop) {
+          padding-left: 0;
+        }
+
+        &#collaboration,
+        &#growth {
+          &-content {
+            @media (min-width: utils.$breakpoint-desktop) {
+              background-color: utils.$white-primary-color !important;
+
+              &::after {
+                content: "";
+                position: absolute;
+                width: calc(100% + utils.$max-width-space);
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+            }
+
+            .detail-container {
+              &__text-description {
+                letter-spacing: 0.93px;
+              }
+            }
+          }
+        }
+
+        &#connection-content {
+          padding-bottom: 10px;
+
+          @media (min-width: utils.$breakpoint-large-desktop) {
+            padding-bottom: 68px;
+          }
+        }
+
+        &#collaboration-content {
+          padding-top: 51px;
+          padding-bottom: 65px;
+          background-color: utils.$purple-fade-color;
+
+          @media (min-width: utils.$breakpoint-desktop) {
+            &::after {
+              background-color: utils.$purple-fade-color;
+            }
+          }
+
+          @media (min-width: utils.$breakpoint-large-desktop) {
+            padding-top: 52px;
+            padding-bottom: 102px;
+          }
+        }
+
+        &#growth-content {
+          padding-top: 44px;
+          padding-bottom: 44px;
+          background-color: utils.$purple-dark-color;
+
+          @media (min-width: utils.$breakpoint-desktop) {
+            
+
+            &::after {
+              background-color: utils.$purple-dark-color;
+            }
+          }
+
+          @media (min-width: utils.$breakpoint-large-desktop) {
+            padding-top: 87px;
+            padding-bottom: 66px;
+          }
+
+          .detail-container {
+            &__title-group {
+              &__order-number {
+                color: utils.$purple-dark-invert-color;
+                &::after {
+                  background-color: utils.$white-primary-color;
+                }
+              }
+            }
+
+            &__text-description {
+              color: utils.$white-primary-color;
+            }
+          }
+        }
+
+        &__title-group {
+          @extend .title-group;
+
+          &__order-number {
+            @extend .text-order-number;
+          }
+
+          &__text-title {
+            @extend .text-detail-title;
+          }
+        }
+
+        &__text-description {
+          @extend .text-description;
+          width: 65%;
+          margin-top: 21px;
+
+          @media (min-width: utils.$breakpoint-desktop) {
+            width: 50%;
+            max-width: 720px;
+          }
+        }
+      }
+    }
+
+    &__slider {
+      &-container {
+        margin-top: calc(250px + 22px);
+        padding-top: 37px;
+
+        &__content {
+          .slick {
+            &-dots {
+              margin-top: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

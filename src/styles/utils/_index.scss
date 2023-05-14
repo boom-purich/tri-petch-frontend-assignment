@@ -1,0 +1,4 @@
+@forward "./breakpoints";
+@forward "./colors";
+
+$max-width-space: calc((100vw * 300px) / 1920px);

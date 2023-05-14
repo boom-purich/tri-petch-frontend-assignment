@@ -1,0 +1,257 @@
+@use "../../utils" as utils;
+@forward "../shared";
+
+$athletes-image-mobile-width: 219px;
+$athletes-image-tablet-width: 273px;
+$athletes-image-desktop-width: 380px;
+$image-large-desktop-width: 591px;
+
+.athletes {
+  &-container {
+    position: relative;
+
+    @media (min-width: utils.$breakpoint-tablet) {
+      margin-top: 81px;
+    }
+
+    @media (min-width: utils.$breakpoint-desktop) {
+      margin-top: 24px;
+      margin-inline: auto;
+      max-width: calc(100% - utils.$max-width-space);
+    }
+
+    &__text-title {
+      @extend .text-title;
+      padding-left: 19px;
+
+      @media (min-width: utils.$breakpoint-tablet) {
+        padding-left: 0;
+        max-width: calc(100% - $athletes-image-tablet-width - 19px);
+        margin-left: auto;
+        margin-bottom: 42px;
+      }
+
+      @media (min-width: utils.$breakpoint-desktop) {
+        margin-bottom: 59px;
+        max-width: calc(87.5% - $athletes-image-desktop-width);
+      }
+
+      @media (min-width: utils.$breakpoint-large-desktop) {
+        max-width: calc(87.5% - $image-large-desktop-width);
+      }
+    }
+
+    &__image-background {
+      position: absolute;
+      width: 100%;
+      max-width: $athletes-image-mobile-width;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 281px;
+      margin-top: 11px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+
+      @media (min-width: utils.$breakpoint-tablet) {
+        max-width: $athletes-image-tablet-width;
+        padding-top: 611px;
+        margin-left: 0;
+        margin-right: auto;
+        margin-top: 0;
+        top: 0;
+        left: 0;
+        right: auto;
+      }
+
+      @media (min-width: utils.$breakpoint-desktop) {
+        max-width: $athletes-image-desktop-width;
+        padding-top: calc(($athletes-image-desktop-width * 950px) / $image-large-desktop-width);
+      }
+
+      @media (min-width: utils.$breakpoint-large-desktop) {
+        max-width: $image-large-desktop-width;
+        padding-top: calc(($image-large-desktop-width * 950px) / $image-large-desktop-width);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+      }
+
+      &::before {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/mobile/football-player-image.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        top: 0;
+        z-index: 1;
+
+        @media (min-width: utils.$breakpoint-tablet) {
+          background-image: url("images/tablet/football-player-image.webp");
+        }
+
+        @media (min-width: utils.$breakpoint-desktop) {
+          background-size: contain;
+          background-image: url("images/desktop/football-player-image.webp");
+        }
+      }
+
+      &::after {
+        width: 100vw;
+        height: 55px;
+        background-color: utils.$purple-fade-color;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @media (min-width: utils.$breakpoint-tablet) {
+          content: none;
+        }
+      }
+    }
+
+    &__details-content {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      @media (max-width: calc(utils.$breakpoint-tablet - 1px)) {
+        display: none;
+      }
+
+      
+
+      .detail-container {
+        padding-left: calc($athletes-image-tablet-width + 19px);
+        padding-right: 20px;
+        background-color: utils.$white-primary-color;
+
+        @media (min-width: utils.$breakpoint-desktop) {
+          padding-left: calc($athletes-image-desktop-width + 12.5%);
+        }
+
+        @media (min-width: utils.$breakpoint-large-desktop) {
+          padding-left: calc($image-large-desktop-width + 12.5%);
+        }
+
+        &#collaboration,
+        &#growth {
+          &-content {
+            position: relative;
+            padding-top: 30px;
+
+            @media (min-width: utils.$breakpoint-desktop) {
+              &::after {
+                content: "";
+                position: absolute;
+                width: calc(100% + utils.$max-width-space);
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+            }
+
+            @media (min-width: utils.$breakpoint-large-desktop) {
+              padding-top: 53px;
+              padding-bottom: 51px;
+            }
+
+            > .detail-container {
+              &__text-description {
+                letter-spacing: 0.837px;
+              }
+            }
+          }
+        }
+
+        &#connection,
+        &#collaboration,
+        &#growth {
+          &-content {
+            padding-bottom: 30px;
+          }
+        }
+
+        &#connection-content {
+          @media (min-width: utils.$breakpoint-large-desktop) {
+            padding-bottom: 56px;
+            .detail-container {
+              &__text-description {
+                padding-top: 31px;
+              }
+            }
+          }
+        }
+
+        &#collaboration-content {
+          @media (min-width: utils.$breakpoint-tablet) and (max-width: calc(utils.$breakpoint-desktop - 1px)) {
+            background-color: utils.$purple-fade-color;
+          }
+
+          @media (min-width: utils.$breakpoint-desktop) {
+            &::after {
+              background-color: utils.$purple-fade-color;
+            }
+          }
+        }
+
+        &#growth-content {
+          @media (min-width: utils.$breakpoint-tablet) and (max-width: calc(utils.$breakpoint-desktop - 1px)) {
+            background-color: utils.$purple-secondary-color;
+          }
+
+          @media (min-width: utils.$breakpoint-desktop) {
+            &::after {
+              background-color: utils.$purple-secondary-color;
+            }
+          }
+
+          @media (min-width: utils.$breakpoint-large-desktop) {
+            padding-top: 85px;
+            padding-bottom: 98px;
+          }
+
+          .detail-container {
+            &__title-group {
+              &__order-number {
+                &::after {
+                  background-color: utils.$white-primary-color;
+                }
+              }
+            }
+
+            &__text-description {
+              color: utils.$white-primary-color;
+            }
+          }
+        }
+
+        &__title-group {
+          @extend .title-group;
+
+          &__order-number {
+            @extend .text-order-number;
+          }
+
+          &__text-title {
+            @extend .text-detail-title;
+          }
+        }
+
+        &__text-description {
+          @extend .text-description;
+          margin-top: 21px;
+
+        }
+      }
+    }
+
+    &__slider-container {
+      margin-top: calc(11px + 281px);
+    }
+  }
+}
